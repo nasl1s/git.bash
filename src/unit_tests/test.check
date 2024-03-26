@@ -1,0 +1,20 @@
+#suite solve_equation
+
+#test test_two_different_roots_111
+    roots_t roots = solve_equation(1, 0, -4);
+    ck_assert_int_eq(roots.num_roots, 2);
+    ck_assert_double_eq(roots.first_root, 2.0);
+    ck_assert_double_eq(roots.second_root, -2.0);
+
+#test test_one_root_111
+    roots_t roots = solve_equation(1, -4, 4);
+    ck_assert_int_eq(roots.num_roots, 1);
+    ck_assert_double_eq(roots.first_root, 2.0);
+
+#test test_no_real_roots_111
+    roots_t roots = solve_equation(1, 2, 3);
+    ck_assert_int_eq(roots.num_roots, 0);
+
+#test test_infinite_solutions_111
+    roots_t roots = solve_equation(0, 0, 0);
+    ck_assert_int_eq(roots.num_roots, NO_SOLUTION);
